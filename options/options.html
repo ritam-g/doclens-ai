@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DocLens AI - Options</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="options-container">
+    <!-- STEP 1: Header Brand Block -->
+    <header class="options-header">
+      <div class="brand">
+        <img src="../icons/icon48.png" alt="DocLens AI Logo" class="brand-icon">
+        <div>
+          <h1 class="brand-title">DocLens AI Settings</h1>
+          <p class="brand-subtitle">Configure your Gemini API key and model preferences</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- STEP 2: Settings Form Body -->
+    <main class="options-body">
+      <!-- Save Success Toast Confirmation -->
+      <div id="saveToast" class="toast hidden" aria-live="polite">
+        ✓ Settings saved successfully!
+      </div>
+
+      <!-- API Key Field -->
+      <div class="form-group">
+        <label for="apiKeyInput" class="form-label">
+          Gemini API Key <span class="required">*</span>
+        </label>
+        <div class="input-with-toggle">
+          <input
+            type="password"
+            id="apiKeyInput"
+            class="form-input"
+            placeholder="AIzaSy..."
+            autocomplete="off"
+            required
+          >
+          <button type="button" id="toggleKeyBtn" class="toggle-btn" title="Show/Hide API Key" aria-label="Show or hide API key">
+            👁️
+          </button>
+        </div>
+        <p class="form-hint">
+          Get a free API key from
+          <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer">Google AI Studio</a>.
+          <br>
+          <strong class="security-note">🔒 Security note:</strong> Your key is stored locally in this browser only.
+        </p>
+      </div>
+
+      <!-- Gemini Model Selection & Load Models Button -->
+      <div class="form-group">
+        <label for="modelSelect" class="form-label">Gemini Model</label>
+        <div class="select-with-button">
+          <select id="modelSelect" class="form-select">
+            <option value="gemini-2.5-flash">gemini-2.5-flash (Default)</option>
+          </select>
+          <button type="button" id="loadModelsBtn" class="btn btn-secondary">
+            <span>Load models</span>
+            <span id="modelsLoadingSpinner" class="spinner-sm hidden"></span>
+          </button>
+        </div>
+        <div id="modelsError" class="models-error hidden" aria-live="polite"></div>
+        <p class="form-hint">Click "Load models" to fetch available models for your API key.</p>
+      </div>
+
+      <!-- Advanced Option: Custom Model Name Input -->
+      <div class="form-group custom-model-group">
+        <div class="custom-model-header">
+          <button type="button" id="toggleCustomModelBtn" class="link-btn">
+            + Use custom model name
+          </button>
+        </div>
+        <input
+          type="text"
+          id="customModelInput"
+          class="form-input hidden"
+          placeholder="e.g. gemini-2.5-flash"
+          autocomplete="off"
+        >
+        <p id="customModelHint" class="form-hint hidden">Enter a custom Gemini model identifier manually if not listed above.</p>
+      </div>
+
+      <!-- Max Characters Limit -->
+      <div class="form-group">
+        <label for="maxCharsInput" class="form-label">Max Characters Limit</label>
+        <input
+          type="number"
+          id="maxCharsInput"
+          class="form-input"
+          value="120000"
+          min="1000"
+          max="500000"
+          step="1000"
+        >
+        <p class="form-hint">Maximum page text characters sent to Gemini (default: 120,000).</p>
+      </div>
+
+      <!-- Form Actions -->
+      <div class="form-actions">
+        <button id="saveBtn" class="btn btn-primary">Save Settings</button>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="options.js"></script>
+</body>
+</html>

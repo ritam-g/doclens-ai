@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DocLens AI</title>
+  <link rel="stylesheet" href="sidepanel.css">
+</head>
+<body>
+  <!-- STEP 1: Top Navigation Header -->
+  <header class="app-header">
+    <div class="brand">
+      <img src="../icons/icon48.png" alt="DocLens AI Logo" class="brand-icon">
+      <h1 class="brand-title">DocLens AI</h1>
+    </div>
+    <button id="settingsBtn" class="icon-btn" title="Open Settings" aria-label="Open Settings">
+      <svg class="gear-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="3"></circle>
+        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+      </svg>
+    </button>
+  </header>
+
+  <!-- STEP 2: Main Side Panel Container -->
+  <main class="app-body">
+    <!-- Active Tab Metadata Banner -->
+    <section class="meta-card">
+      <div class="meta-label">CURRENT PAGE</div>
+      <div class="page-title" id="pageTitle" title="Current Page Title">Loading page details...</div>
+      <div class="page-url" id="pageUrl" title="Current Page URL">...</div>
+    </section>
+
+    <!-- User Input Focus Question Section -->
+    <section class="input-section">
+      <label for="questionInput" class="input-label">What are you looking for?</label>
+      <textarea
+        id="questionInput"
+        class="question-input"
+        rows="3"
+        placeholder="e.g. How does authentication work here? (Optional: leave empty for page summary)"
+      ></textarea>
+
+      <div class="action-bar">
+        <button id="analyzeBtn" class="btn btn-primary">
+          <span class="btn-text">Analyze</span>
+          <span id="btnSpinner" class="spinner hidden"></span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Loading State Indicator -->
+    <section id="loadingState" class="loading-card hidden">
+      <div class="spinner-large"></div>
+      <p class="loading-text">Reading page and analyzing...</p>
+    </section>
+
+    <!-- Error Alert Banner -->
+    <section id="errorCard" class="error-card hidden" aria-live="polite">
+      <div class="error-header">
+        <span class="error-icon">⚠️</span>
+        <span id="errorTitle" class="error-title">Error</span>
+      </div>
+      <p id="errorMessage" class="error-message"></p>
+      <div id="errorActions" class="error-actions">
+        <button id="openSettingsBtn" class="btn btn-secondary hidden">Open Settings</button>
+      </div>
+    </section>
+
+    <!-- Analysis Results Section -->
+    <section id="resultCard" class="result-card hidden" aria-live="polite">
+      <div class="result-header">
+        <h2 class="result-heading">Key Points</h2>
+        <div class="result-actions">
+          <button id="copyBtn" class="btn btn-sm btn-ghost" title="Copy text to clipboard">Copy</button>
+          <button id="clearBtn" class="btn btn-sm btn-ghost" title="Clear results">Clear</button>
+        </div>
+      </div>
+
+      <div id="truncationWarning" class="truncation-warning hidden">
+        ℹ️ Page content exceeded length limit and was trimmed for analysis.
+      </div>
+
+      <div id="resultContent" class="result-content"></div>
+    </section>
+  </main>
+
+  <script type="module" src="sidepanel.js"></script>
+</body>
+</html>
