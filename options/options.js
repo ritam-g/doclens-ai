@@ -9,7 +9,7 @@
  * Global Constants
  * Why: Defines fallback defaults if storage items are uninitialized.
  */
-const DEFAULT_MODEL = 'gemini-2.5-flash';
+const DEFAULT_MODEL = 'gemini-3.8-flash';
 const DEFAULT_MAX_CHARS = 120000;
 
 /**

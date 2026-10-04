@@ -11,7 +11,7 @@ import { buildPrompt } from './utils/prompt.js';
  * Global Constants
  * Why: Centralizes default configuration constants and API endpoint URLs.
  */
-const DEFAULT_MODEL = 'gemini-2.5-flash';
+const DEFAULT_MODEL = 'gemini-3.8-flash';
 const DEFAULT_MAX_CHARS = 120000;
 const REQUEST_TIMEOUT_MS = 30000;
 const GEMINI_API_BASE_URL = 'https://generativelanguage.googleapis.com/v1beta/models';
